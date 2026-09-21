@@ -1,0 +1,36 @@
+# Incident 001: Repeated Failed Logon Attempts
+
+## Summary
+
+Multiple failed interactive logon attempts were intentionally generated against the local `labuser` account in an isolated Windows 11 security lab.
+
+## Detection
+
+Windows Security Event ID 4625 recorded the failed authentication attempts.
+
+## Evidence
+
+- Event ID: 4625
+- Account: labuser
+- Logon Type: 2
+- Failure Reason: Unknown user name or bad password
+- Source Network Address: 127.0.0.1
+- Environment: Windows 11 Enterprise VM
+- Activity Type: Simulated lab activity
+
+## Analysis
+
+Logon Type 2 indicates an interactive logon attempt. Multiple failed authentication attempts occurred within a short period against the same account.
+
+Repeated failures like these can be associated with password guessing or brute-force activity, although the events in this lab were intentionally generated for testing.
+
+## Response
+
+- Reviewed the affected account
+- Confirmed the activity originated locally
+- Verified no successful unauthorized authentication occurred
+- Documented the event for further detection testing
+
+## Conclusion
+
+Windows Security auditing successfully detected and recorded the simulated failed authentication attempts. Event ID 4625 provided information including the targeted account, failure reason, logon type, source, and process details.
